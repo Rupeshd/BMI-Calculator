@@ -295,21 +295,29 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
               
-              Expanded(
-                child: Container(
+              Container(
+                width: double.infinity,
+                margin: const EdgeInsets.fromLTRB(10.0,10.0,10.0,10.0),
+                height: 80.0,
+                decoration: const BoxDecoration(
                   color: Colors.teal,
-                  width: double.infinity,
-                  child: TextButton(
-                    onPressed: () {
-                      // Handle button press
-                    },
-                    child: Text('Calculate BMI',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight(1000),
-                                  ),
-                    ),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(5.0),
+                    topRight: Radius.circular(5.0),
+                    bottomLeft: Radius.circular(45.0),
+                    bottomRight: Radius.circular(45.0),
+                  )
+                ),
+                child: TextButton(
+                  onPressed: () {
+                    // Handle button press
+                  },
+                  child: Text('Calculate BMI',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight(1000),
+                                ),
                   ),
                 ),
               ),
