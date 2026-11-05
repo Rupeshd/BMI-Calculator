@@ -3,297 +3,319 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const MyApp());
 }
+
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  const new({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  int heightVal = 150;
+  int heightValue = 175;
   int weightVal = 62;
   int ageVal = 20;
   int gender = 0;
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
-      home: Scaffold( 
+      home: Scaffold(
         appBar: AppBar(
-        centerTitle: true,
-        elevation: 5,
-        shadowColor: Colors.orange,
-        title: Text('BMI Calculator',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 25,
-            fontWeight: FontWeight(1000),
+          centerTitle: true,
+          elevation: 5,
+          shadowColor: Colors.orange,
+          title: Text(
+            'BMI Calculator',
+            style: TextStyle(
+              fontSize: 25,
+              color: Colors.white,
+              fontWeight: FontWeight(1000),
             ),
-          ),    
-
+          ),
         ),
-
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children:[
-            
-            Text('Gender',
-              textAlign: TextAlign.center,  
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: TextButton(
+                        onPressed: (){
+                          setState(() {
+                            gender = 1;
+                          });
+                        },
+                        child: Expanded(
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: gender == 1 ?Colors.orange : Colors.teal,
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: Colors.orange, width: 3),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.male, color: Colors.white, size: 50),
+                                Text(
+                                  'Male',
+                                  style: TextStyle(
+                                    fontSize: 35,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight(1000),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: TextButton(
+                        onPressed: (){
+                          setState(() {
+                            gender = 2;
+                          });
+                        },
+                        child: Expanded(
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: gender == 2? Colors.orange : Colors.teal,
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: Colors.orange, width: 3),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.female, color: Colors.white, size: 50),
+                                Text(
+                                  'Female',
+                                  style: TextStyle(
+                                    fontSize: 35,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight(1000),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: TextButton(
-                    onPressed: (){
 
-                      setState(() {
-                        gender = 1;
-                      });
-                    },
-                    child: Container(
-                      height: 200,
-                      width: 200,
-                      color: gender  == 1 ? Colors.orange : Colors.teal,
-                      margin: EdgeInsets.all(20),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.male, color: Colors.white, size: 25),
-                          SizedBox(height: 10,),
-                          Text('Male',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight(1000),
-                            ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                            color: Colors.teal,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: Colors.orange, width: 3),
                           ),
-                        ],
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Height',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 35,
+                            fontWeight: FontWeight(1000),
+                          ),
+                        ),
+                        Text(
+                          '$heightValue cm',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontWeight: FontWeight(1000),
+                          ),
+                        ),
+                        Slider(
+                          value: heightValue.toDouble(),
+                          min: 100,
+                          max: 230,
+                          activeColor: Colors.orange,
+                          inactiveColor: Colors.white,
+                          onChanged: (double newValue) {
+                            setState(() {
+                              heightValue = newValue.toInt();
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+              Expanded(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.teal,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: Colors.orange, width: 3),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Weight',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight(1000),
+                                ),
+                              ),
+                    
+                              Text(
+                                '$weightVal kg',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight(1000),
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  FloatingActionButton.small(
+                                    onPressed: () {
+                                  setState(() {
+                                    weightVal++;
+                                  });
+                                },
+                                    child: Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                      size: 30,
+                                    ),
+                                  ),
+                                  FloatingActionButton.small(
+                                    onPressed: () {
+                                  setState(() {
+                                    weightVal--;
+                                  });
+                                },
+                                    child: Icon(
+                                      Icons.remove,
+                                      color: Colors.white,
+                                      size: 30,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  ),               
-                ),
-                Expanded(
-                  child: TextButton(
-                    onPressed: () {
-                      setState(() {
-                        gender = 2;
-                        
-                      });
-                      
-                    },
-                    child: Container(
-                      height: 200,
-                      width: 200,
-                      color: gender  == 2 ? Colors.orange : Colors.teal,
-                      margin: EdgeInsets.all(20),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.female, color: Colors.white, size: 25),
-                          SizedBox(height: 10,),
-                          Text('Female',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight(1000),
-                            ),
+                    
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.teal,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: Colors.orange, width: 3),
                           ),
-                        ],
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Age',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight(1000),
+                                ),
+                              ),
+                    
+                              Text(
+                                '$ageVal Years',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight(1000),
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  FloatingActionButton.small(
+                                    onPressed: () {
+                                  setState(() {
+                                    ageVal++;
+                                  });
+                                },
+                                    child: Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                      size: 30,
+                                    ),
+                                  ),
+                                  FloatingActionButton.small(
+                                    onPressed: () {
+                                  setState(() {
+                                    ageVal--;
+                                  });
+                                },
+                                    child: Icon(
+                                      Icons.remove,
+                                      color: Colors.white,
+                                      size: 30,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  ),               
+                  ],
                 ),
-              ],
-            ),
-            
-            Row(
-              children: [
-                Expanded(
+              ),
+              
+              Expanded(
+                child: Container(
+                  color: Colors.teal,
+                  width: double.infinity,
                   child: TextButton(
                     onPressed: () {
                       // Handle button press
                     },
-                    child: Container(
-                      height: 200,
-                      width: double.infinity,
-                      color: Colors.teal,
-                      margin: EdgeInsets.all(20),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(height: 10,),
-                          Text('Height',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight(1000),
-                            ),
-                          ),
-                          Text('$heightVal cm',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight(1000),
-                            ),
-                          ),
-                          Slider(
-                            value: heightVal.toDouble(),
-                            min: 100,
-                            max: 220,
-                            onChanged: (double newVal) {
-                              setState(() {
-                                heightVal = newVal.round();
-                              });
-                            },
-                          ),
-                        ],
-                      ),
+                    child: Text('Calculate BMI',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight(1000),
+                                  ),
                     ),
-                  ),               
-                ),
-              ],
-            ),
-
-            Row(
-              children:[
-                Expanded(
-                  child: Container(
-                    height: 200,
-                    width: 200,
-                    color: Colors.teal,
-                    margin: EdgeInsets.all(20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(height: 10,),
-                        Text('Weight',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight(1000),
-                          ),
-                        ),
-
-                        Text('$weightVal kg',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight(1000),
-                          ),
-                        ),
-
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            FloatingActionButton.small(
-                              backgroundColor: Colors.orange,
-                              onPressed: () {
-                                setState(() {
-                                  weightVal--;
-                                });
-                              },
-                              child: Icon(Icons.remove, color: Colors.white),
-                            ),
-                            SizedBox(width: 10),
-                            FloatingActionButton.small(
-                              backgroundColor: Colors.orange,
-                              onPressed: () {
-                                setState(() {
-                                  weightVal++;
-                                });
-                              },
-                              child: Icon(Icons.add, color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),               
-                ),
-
-                Expanded(
-                  child: Container(
-                    height: 200,
-                    width: 200,
-                    color: Colors.teal,
-                    margin: EdgeInsets.all(20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(height: 10,),
-                        Text('Age',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight(1000),
-                          ),
-                        ),
-                        Text('$ageVal years',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight(1000),
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children:[
-                            FloatingActionButton.small(
-                              backgroundColor: Colors.orange,
-                              onPressed: () {
-                                setState(() {
-                                  ageVal--;
-                                });
-                              },
-                              child: Icon(Icons.remove, color: Colors.white, size: 30.0),
-                            ),
-                            SizedBox(width: 10),
-                            FloatingActionButton.small(
-                              backgroundColor: Colors.orange,
-                              onPressed: () {
-                                setState(() {
-                                  ageVal++;
-                                });
-                              },
-                              child: Icon(Icons.add, color: Colors.white, size: 30.0),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),               
-                ),
-              ]
-            ),
-
-            Expanded(
-              child: Container(
-                height: 50,
-                color: Colors.teal,
-                width: double.infinity,
-                child: TextButton(
-                  onPressed: () {
-                    // Handle button press
-                  },
-                  child: Text('Calculate BMI',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight(1000),
-                                ),
                   ),
                 ),
               ),
-            ),
+            ],
 
-          ],
+          ),
         ),
       ),
     );
