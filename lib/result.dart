@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/data.dart';
 import 'package:flutter/material.dart';
 
 class Result extends StatefulWidget {
@@ -44,9 +45,11 @@ class _ResultState extends State<Result> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          '',
+                          'BMI Result = $bmi ',
+                          
                           style: TextStyle(
-                            fontSize: 35,
+                            fontFamily: 'Times New Roman',
+                            fontSize: 25,
                             color: Colors.white,
                             fontWeight: FontWeight(1000)
                           ),

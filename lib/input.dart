@@ -1,5 +1,6 @@
 import 'package:bmi_calculator/result.dart';
 import 'package:flutter/material.dart';
+import 'data.dart';
 
 class Input extends StatefulWidget {
   const new({super.key});
@@ -9,10 +10,6 @@ class Input extends StatefulWidget {
 }
 
 class _InputState extends State<Input> {
-  int heightValue = 175;
-  int weightVal = 62;
-  int ageVal = 20;
-  int gender = 0;
   @override
   Widget build(BuildContext context) {
     
@@ -193,6 +190,7 @@ class _InputState extends State<Input> {
                                     weightVal++;
                                   });
                                 },
+                                heroTag: 'btn1',
                                     child: Icon(
                                       Icons.add,
                                       color: Colors.white,
@@ -207,6 +205,7 @@ class _InputState extends State<Input> {
                                     }
                                   });
                                 },
+                                heroTag: 'btn2',
                                     child: Icon(
                                       Icons.remove,
                                       color: Colors.white,
@@ -260,6 +259,7 @@ class _InputState extends State<Input> {
                                     ageVal++;
                                   });
                                 },
+                                heroTag: 'btn3',
                                     child: Icon(
                                       Icons.add,
                                       color: Colors.white,
@@ -274,6 +274,7 @@ class _InputState extends State<Input> {
                                     }
                                   });
                                 },
+                                heroTag: 'btn4',
                                     child: Icon(
                                       Icons.remove,
                                       color: Colors.white,
@@ -306,6 +307,9 @@ class _InputState extends State<Input> {
                 ),
                  child: TextButton(
                   onPressed: () {
+
+                    
+
                     Navigator.push(context, 
                     MaterialPageRoute(
                       builder: (context) => const Result())
@@ -313,6 +317,7 @@ class _InputState extends State<Input> {
                   },
                   child: Text('Calculate BMI',
                                 style: TextStyle(
+                                  fontFamily: 'Times New Roman',
                                   color: Colors.white,
                                   fontSize: 20,
                                   fontWeight: FontWeight(1000),
