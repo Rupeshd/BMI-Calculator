@@ -9,6 +9,19 @@ class Result extends StatefulWidget {
 }
 
 class _ResultState extends State<Result> {
+
+  Widget addText(double fontSize, Color textColor, FontWeight fontweight, TextAlign textalign, String text){
+    return Text(
+      text,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: fontSize,
+        fontWeight: fontweight,
+        color: textColor,
+
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,40 +40,39 @@ class _ResultState extends State<Result> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                    color: Colors.teal,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.orange, width: 3),
-                    
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'BMI Result = $bmi ',
-                          
-                          style: TextStyle(
-                            fontFamily: 'Times New Roman',
-                            fontSize: 25,
-                            color: Colors.white,
-                            fontWeight: FontWeight(1000)
-                          ),
-                        ),
-                      ],
-                    ),
-                    
-                  ),
-                ),
-              ],
-            )
+            SizedBox(height: 50,),
+            addText(30, Colors.white, FontWeight(1000), TextAlign.left , 'your result'),
+            SizedBox(height: 50,),
+            Container(
+              alignment: Alignment.centerLeft,
+              margin: EdgeInsets.only(left: 30),
+              child: addText(20, Colors.white, FontWeight(1000), TextAlign.center, 'Gender : ${gender == 1 ? 'male' : 'female'}'),
+              ),
+              Container(
+              alignment: Alignment.centerLeft,
+              margin: EdgeInsets.only(left: 30),
+              child: addText(20, Colors.white, FontWeight(1000), TextAlign.center, 'Age : $ageVal'),
+              ),
+              Container(
+              alignment: Alignment.centerLeft,
+              margin: EdgeInsets.only(left: 30),
+              child: addText(20, Colors.white, FontWeight(1000), TextAlign.center, 'weight : $weightVal'),
+              ),
+              Container(
+              alignment: Alignment.centerLeft,
+              margin: EdgeInsets.only(left: 30),
+              child: addText(20, Colors.white, FontWeight(1000), TextAlign.center, 'Height : $heightValue'),
+              ),
+              
+              SizedBox(height: 30,),
+
+              Container(
+                height: 150,
+                width: double.infinity,
+                color: Colors.teal,
+              )
+
           ],
         ),
       ),
