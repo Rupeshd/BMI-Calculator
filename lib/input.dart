@@ -11,7 +11,9 @@ class Input extends StatefulWidget {
 
 class _InputState extends State<Input> {
   @override
+  
   Widget build(BuildContext context) {
+
     
     return Scaffold(
         appBar: AppBar(
@@ -307,7 +309,24 @@ class _InputState extends State<Input> {
                 ),
                  child: TextButton(
                   onPressed: () {
+                    bmi = (weightVal / (heightValue * heightValue)) * 10000;
 
+                      if (bmi >= 30) {
+                          resultType = "Obesity";
+                          comment = commentinfo[0];
+                        } 
+                        else if (bmi >= 25) {
+                          resultType = "Overweight";
+                          comment = commentinfo[1];
+                        }
+                        else if (bmi >= 18.5) {
+                          resultType = "Normal";
+                          comment = commentinfo[0];
+                        }
+                        else {
+                          resultType = "Underweight";
+                          comment = commentinfo[1];
+                        }
                     
 
                     Navigator.push(context, 
